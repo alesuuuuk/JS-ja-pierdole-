@@ -1,102 +1,82 @@
+// exception
 
-console.log("JA PIERDOLE")
-const KURWA = "kurwa"
-if (KURWA == "fgfgff") {
-    console.log("jfff")
-}
-else {
-    console.log("pacany buryu narygav")
-}
-let text = "some text__"
+// try{
+//     result = 1/1
+//     alert(result)
+// }catch(e){
+//     alert(e)
+// }finally{
+//     alert('final')
+// }
 
+// // loops
+// let a = 10
+// while(a>5){
+//     console.log(a)
+//     a--
+// }
+// a=  5
+// console.log("_____", a)
+// do{
+//     console.log(a)
+//     a--
+// }while(a>5)
 
+// for(i = 0; i<= 10; i++){
+//     console.log(i)
+// }
 
-var testVariableOne = "test1"
-let testVariableTwo = "test2"
-const testVariableThree = "test3"
-
-// let nameUser, age, surname;
-// nameUser = 'John'
-// age = 21
-// surname = "Doe"
-
-// console.log(nameUser + surname + age)   
-
-// console.log(`Name:${nameUser}, Username${surname}, Age:${age}`)
-// console.log(typeof nameUser, typeof age, typeof surname)
-// console.log(nameUser.toLowerCase()) // toUpperCase()
-// console.log(text.length)
-
-// console.log(text.replaceAll(" ", ""))
-
-// console.log(nameUser[0])
-
-// console.log(56>3)
-
-// let tempArr = [1, 3, 2, 5, 543242, 123, 3425, "test"]
-// console.log(tempArr)
-// console.log(tempArr.length)
-// tempArr.push("new element!!")
-// console.log(tempArr)
-// tempArr.unshift(" new start element")
-// console.log(tempArr)
-// tempArr.pop()
-// console.log(tempArr)
-
-// tempArr.forEach(element => {
-//     console.log(element)
-// });
-
-// let index = tempArr.indexOf('test')
-// tempArr.splice(index, 1)
-// console.log(tempArr)
-
-
-// let fruits_arr = ['apple', "pineaple", "banana"]
-// fruits_arr.forEach((fruit, index)=>{
-//     console.log(fruit, index)
+// let arr = [1, 2, "map"]
+// arr.map((item)=>{
+//     console.log(item)
+// })
+// console.log('____')
+// arr.forEach((item)=>{
+//     console.log(item)
 // })
 
-// fruits_arr.map((fruit, index)=>{
-//     console.log(fruit, index)
-// })
+// consitional
+// let a = prompt()
+// if(a>=10){
+//     alert("taplo")
+// }else if(a< 10 && a >0){
+//     alert("norma")
+// }else{
+//     alert("cjolodno")
+// }
+
+// let salary = 100
+
+// salary >= 150 ? alert("pracuyete") : alert("ne pracuyete")
+
+// select condition
+// a = 4
+
+// switch(a){
+//     case 2:
+//         alert(2)
+//         break
+//     case 4:
+//     case 6:
+//         alert("curent")
+//         break
+//     default:
+//         alert("else value")
+// }
 
 
-// let filteredFruits = fruits_arr.filter((fruit)=>{
-//     if( fruit == 'banana'){
-//         return fruit
-//     }
-// })
-// console.log(filteredFruits)
+// listeners
 
 
-// filteredFruits = fruits_arr.filter(fruit => fruit== 'apple')
-// console.log(filteredFruits)
+// start point
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const BODY = document.querySelector("body")
+    const RED_BTN =  document.querySelector("#red")
+    RED_BTN.addEventListener("click", (e)=>{
+        e.preventDefault();
+        BODY.style.backgroundImage = "../rick.png"
 
 
-// // sort
-// let numbersArr = [1,2,33,423,4,24,42,42,32,4,24,35,654,67]
-// numbersArr.sort((a, b)=>{
-//     return a - b
-// })
-
-// console.log(numbersArr)
-
-
-let tempUser = {
-    name: "john",
-    age: 21,
-    adress: [],
-    surname: "doe"
-}
-
-console.log(tempUser.name)
-// add new element
-tempUser.salary = 3000
-console.log(tempUser)
-
-const {name, surname, adress} = tempUser
-console.log(surname)
-
-delete tempUser.age
-console.log(tempUser)
+    })
+})
