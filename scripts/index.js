@@ -1,102 +1,126 @@
+// const changeBgColor = (selector, color) => {
+//     const element = document.querySelector(selector)
+//     element.style.backgroundColor = color;
+// }
 
-console.log("JA PIERDOLE")
-const KURWA = "kurwa"
-if (KURWA == "fgfgff") {
-    console.log("jfff")
+// // start point
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     // get elements
+//     const RED_BTN = document.querySelector("#red");
+//     // const NAME = document.querySelectorAll(".form__name")
+//     // const NAME = document.getElementsByClassName("form__name")[0]
+    
+//     const FORM = document.querySelector(".form")
+    
+    
+//     // add listeners
+//     FORM.addEventListener("submit", (e)=>{
+//         e.preventDefault()
+//         const COLOR = document.getElementById("form__color")
+//         const NAME = document.querySelector(".form__name")
+//         const USER_NAME = NAME.value;
+//         const USER_COLOR = COLOR.value
+//         console.log(USER_NAME, USER_COLOR)
+//         changeBgColor("body", USER_COLOR)
+//         NAME.value = ""
+        
+        
+//     })
+//     // RED_BTN.addEventListener("click", (e)=>{
+//     //     e.preventDefault();
+//     //     changeBgColor("body", "#f00");
+//     // })
+// })
+    
+
+
+//     // NAME.addEventListener("change", ()=>{
+//     //     alert("work")
+//     // })
+// //     // RED_BTN.addEventListener("click", (e)=>{
+// //     //     e.preventDefault();
+// //     //     changeBgColor("body", "#f00")
+// //     })
+
+
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     const FORM = document.querySelector("#form")
+//     FORM.addEventListener("submit", (e)=>{
+//         e.preventDefault()
+//         const USER_NAME = document.getElementById("userName").value
+        
+//         const USER_SURNAME = document.getElementById("userSurname").value
+//         const USER_FATHER_NAME = document.getElementById("userFathersname").value
+//         const USER_PHONE_NUMBER  =  document.getElementById("userPhoneNumber").value
+//         const USER_EMAIL  =  document.getElementById("userMail").value
+//         const USER_QUINTUTACY  =  document.getElementById("userQuintutaty").value
+//         const USER_DATE  =  document.getElementById("userDate").value
+//         const USER_TIME  =  document.getElementById("userTime").value
+//         const USER_COMMENT  =  document.getElementById("userComment").value
+//         console.log(USER_NAME, "____", USER_SURNAME, "____", USER_FATHER_NAME, "____", USER_PHONE_NUMBER, "____", USER_EMAIL, "____", USER_QUINTUTACY, "____", USER_DATE, "____", USER_TIME, "____", USER_COMMENT)
+                        
+//     })
+
+// })
+
+// const changeBgColor = (selector, color) => {
+//     const element = document.querySelector(selector)
+//     element.style.backgroundColor = color;
+// }
+
+// // start point
+// document.addEventListener("DOMContentLoaded", () => {
+//     // get elements
+//     const RED_BTN = document.querySelector("#red");
+//     // const NAME = document.querySelectorAll(".form__name")
+//     // const NAME = document.getElementsByClassName("form__name")[0]
+//     const FORM = document.querySelector(".form")
+//     const SHOW_ELEMENT_BTN = document.querySelector(".show__element")
+
+
+//     // add listeners
+//     // NAME.addEventListener("change", (e)=>{
+//     //     const USER_NAME = e.target.value;
+//     // })
+//     FORM.addEventListener("submit", (e) => {
+//         e.preventDefault();
+//         // get elements
+//         const NAME = document.querySelector(".form__name");
+//         const COLOR = document.getElementById("form__color");
+//         // get value
+//         const USER_NAME = NAME.value;
+//         const USER_COLOR = COLOR.value;
+//         // display result
+//         changeBgColor("body", USER_COLOR)
+
+//         // clear form
+//         NAME.value = "";
+
+//         // display status request
+
+
+//     })
+//     // RED_BTN.addEventListener("click", (e)=>{
+//     //     e.preventDefault();
+//     //     changeBgColor("body", "#f00");
+//     // })
+//     SHOW_ELEMENT_BTN.addEventListener("click", (e) => {
+//         // generate html
+//         let html = `
+//             <h1>Test Insert Element</h1>
+//             <div class="conntent__area_box">
+//                 test
+//             </div>
+//         `
+//         // get insert area
+//         const AREA = document.querySelector('.conntent__area')
+//         // put html in area
+//         AREA.innerHTML = html;
+//     })
+// })
+
+
+const clearHTMLElement = (selector) =>{
+    const TARGET = document.querySelector(selector)
+    TARGET.inner = ''
 }
-else {
-    console.log("pacany buryu narygav")
-}
-let text = "some text__"
-
-
-
-var testVariableOne = "test1"
-let testVariableTwo = "test2"
-const testVariableThree = "test3"
-
-// let nameUser, age, surname;
-// nameUser = 'John'
-// age = 21
-// surname = "Doe"
-
-// console.log(nameUser + surname + age)   
-
-// console.log(`Name:${nameUser}, Username${surname}, Age:${age}`)
-// console.log(typeof nameUser, typeof age, typeof surname)
-// console.log(nameUser.toLowerCase()) // toUpperCase()
-// console.log(text.length)
-
-// console.log(text.replaceAll(" ", ""))
-
-// console.log(nameUser[0])
-
-// console.log(56>3)
-
-// let tempArr = [1, 3, 2, 5, 543242, 123, 3425, "test"]
-// console.log(tempArr)
-// console.log(tempArr.length)
-// tempArr.push("new element!!")
-// console.log(tempArr)
-// tempArr.unshift(" new start element")
-// console.log(tempArr)
-// tempArr.pop()
-// console.log(tempArr)
-
-// tempArr.forEach(element => {
-//     console.log(element)
-// });
-
-// let index = tempArr.indexOf('test')
-// tempArr.splice(index, 1)
-// console.log(tempArr)
-
-
-// let fruits_arr = ['apple', "pineaple", "banana"]
-// fruits_arr.forEach((fruit, index)=>{
-//     console.log(fruit, index)
-// })
-
-// fruits_arr.map((fruit, index)=>{
-//     console.log(fruit, index)
-// })
-
-
-// let filteredFruits = fruits_arr.filter((fruit)=>{
-//     if( fruit == 'banana'){
-//         return fruit
-//     }
-// })
-// console.log(filteredFruits)
-
-
-// filteredFruits = fruits_arr.filter(fruit => fruit== 'apple')
-// console.log(filteredFruits)
-
-
-// // sort
-// let numbersArr = [1,2,33,423,4,24,42,42,32,4,24,35,654,67]
-// numbersArr.sort((a, b)=>{
-//     return a - b
-// })
-
-// console.log(numbersArr)
-
-
-let tempUser = {
-    name: "john",
-    age: 21,
-    adress: [],
-    surname: "doe"
-}
-
-console.log(tempUser.name)
-// add new element
-tempUser.salary = 3000
-console.log(tempUser)
-
-const {name, surname, adress} = tempUser
-console.log(surname)
-
-delete tempUser.age
-console.log(tempUser)
