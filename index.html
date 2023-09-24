@@ -4,13 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/style/index.css">
 </head>
 
 <body>
     
-    hello world
+    <header>
+        <b>HEADER</b>
+    </header>
+    
+    <main>
+        <section class="register__form">
+            <h1>Шукаєте роботу чи няню?</h1>
+            <section class="register__form_choice">
+                <button id="some">Шукаю няню</button>
+                <button>Шукаю роботу</button>
+            </section>
+            <form id="form">
+                <input id="userName" type="text" placeholder="Введіть своє ім'я">
+                <input id="userSrname" type="text" placeholder="Введіть своє прізвище">
+                <input id="userEmail" type="email" placeholder="Введіть свою пошту">
+                <input id="userPasswordOne" type="password" placeholder="Введіть перший пароль">
+                <input  id="userPasswordTwo" type="password" placeholder="Введіть другий пароль">
+                <label style="display: block; margin-bottom: 15px;" >Так, я розумію та погоджуюся з Умовами обслуговування, включаючи <a href="#">Угоду користувача</a> та <a href="#">Політику конфіденційності</a></label>
+                <input id="submit" type="submit" value="Зареєструватись">
+            </form>
+            <p style="position: absolute; margin-left: 20px;"> Вже зареєстовані? <a href="">Увійти</a></p>
+           
+        </section>
+    </main>
+    
 
+    <footer>
+        FOOTER
+    </footer>
+    
     <script src="/scripts/index.js"></script>
 </body>
 </html>
