@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", ()=>{
     const FORM = document.getElementById("form")
     FORM.addEventListener("submit", (e)=>{
@@ -14,4 +15,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     })
 })
+
 
