@@ -178,8 +178,8 @@ label{
   margin-bottom: 10px; /* Відступ між полями форми */
  }
 
-#user_name,
-#user_surname{
+#userName,
+#userSurname{
   min-width: 45%;
   border-radius: 8px;
 border: 1px solid rgba(30, 49, 115, 0.30);
@@ -190,9 +190,9 @@ height: 50px;
 
 }
   
-#user_email,
-#user_password_one,
-#user_password_two
+#userEmail,
+#userPasswordOne,
+#userPasswordTwo
 {
 justify-content: space-between;
 width: 416px;
