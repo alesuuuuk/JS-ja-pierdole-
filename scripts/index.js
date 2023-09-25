@@ -1,102 +1,61 @@
-
-console.log("JA PIERDOLE")
-const KURWA = "kurwa"
-if (KURWA == "fgfgff") {
-    console.log("jfff")
-}
-else {
-    console.log("pacany buryu narygav")
-}
-let text = "some text__"
-
-
-
-var testVariableOne = "test1"
-let testVariableTwo = "test2"
-const testVariableThree = "test3"
-
-// let nameUser, age, surname;
-// nameUser = 'John'
-// age = 21
-// surname = "Doe"
-
-// console.log(nameUser + surname + age)   
-
-// console.log(`Name:${nameUser}, Username${surname}, Age:${age}`)
-// console.log(typeof nameUser, typeof age, typeof surname)
-// console.log(nameUser.toLowerCase()) // toUpperCase()
-// console.log(text.length)
-
-// console.log(text.replaceAll(" ", ""))
-
-// console.log(nameUser[0])
-
-// console.log(56>3)
-
-// let tempArr = [1, 3, 2, 5, 543242, 123, 3425, "test"]
-// console.log(tempArr)
-// console.log(tempArr.length)
-// tempArr.push("new element!!")
-// console.log(tempArr)
-// tempArr.unshift(" new start element")
-// console.log(tempArr)
-// tempArr.pop()
-// console.log(tempArr)
-
-// tempArr.forEach(element => {
-//     console.log(element)
-// });
-
-// let index = tempArr.indexOf('test')
-// tempArr.splice(index, 1)
-// console.log(tempArr)
-
-
-// let fruits_arr = ['apple', "pineaple", "banana"]
-// fruits_arr.forEach((fruit, index)=>{
-//     console.log(fruit, index)
-// })
-
-// fruits_arr.map((fruit, index)=>{
-//     console.log(fruit, index)
-// })
-
-
-// let filteredFruits = fruits_arr.filter((fruit)=>{
-//     if( fruit == 'banana'){
-//         return fruit
-//     }
-// })
-// console.log(filteredFruits)
-
-
-// filteredFruits = fruits_arr.filter(fruit => fruit== 'apple')
-// console.log(filteredFruits)
-
-
-// // sort
-// let numbersArr = [1,2,33,423,4,24,42,42,32,4,24,35,654,67]
-// numbersArr.sort((a, b)=>{
-//     return a - b
-// })
-
-// console.log(numbersArr)
-
-
-let tempUser = {
-    name: "john",
-    age: 21,
-    adress: [],
-    surname: "doe"
+function show_password(selector) {
+    // get element
+    const TARGET = document.querySelector(selector)
+    TARGET.setAttribute("type", "text")
+    // hide element
+    
 }
 
-console.log(tempUser.name)
-// add new element
-tempUser.salary = 3000
-console.log(tempUser)
+const getUserRole = (element) => {
+    const ACTIVE_ELEMENT = element.querySelector(".active")
+    const DATA = ACTIVE_ELEMENT.getAttribute("data-role")
+    return DATA
+}
 
-const {name, surname, adress} = tempUser
-console.log(surname)
+const getLastNameUser = (element) => {
+    const VALUE =  element.value;
+    if (VALUE.length >= 3){
+        return VALUE
+    } else {
+        alert("Lastname to short")
+        return null
+    }
+}
 
-delete tempUser.age
-console.log(tempUser)
+
+// start point
+document.addEventListener("DOMContentLoaded", () => {
+    // get element from document
+    const LEFT_BLOCK = document.querySelector(".form__top_LFor_Lblock");
+    const RIGHT_BLOCK = document.querySelector(".form__top_LFor_Rblock");
+    const LF_BLOCK = document.querySelector(".form__top_LFor");
+    const CHECK_BOX = document.querySelector(".form__input_checkbox");
+    const SUBMIT_BTN = document.querySelector(".form__input_sumbit");
+    const REGISTER_FORM = document.querySelector(".form");
+    const INPUT_LAST_NAME = document.querySelector(".form__input_second_name");
+    
+    
+    // switch user role
+    LF_BLOCK.addEventListener("click", () => {
+        LEFT_BLOCK.classList.toggle('active');
+        RIGHT_BLOCK.classList.toggle('active');
+    })
+    // get value form checkbox on click
+    CHECK_BOX.addEventListener("click", function (e) {
+        const CHECK_BOX_VALUE = CHECK_BOX.checked
+        // CHECK_BOX_VALUE ? SUBMIT_BTN.disabled = !CHECK_BOX_VALUE : SUBMIT_BTN.disabled = !CHECK_BOX_VALUE;
+        CHECK_BOX_VALUE ? SUBMIT_BTN.disabled = false : SUBMIT_BTN.disabled = true;
+    })
+    // submit form
+    REGISTER_FORM.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        // get data form
+        let role = getUserRole(LF_BLOCK);
+        let lastUserName = getLastNameUser(INPUT_LAST_NAME);
+        // create data frame
+        const USER_DATA = {
+            role, lastUserName
+        }
+        console.log("USER_DATA", USER_DATA)
+    })
+})
