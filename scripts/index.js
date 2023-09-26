@@ -1,10 +1,37 @@
-function show_password(selector) {
-    // get element
-    const TARGET = document.querySelector(selector)
-    TARGET.setAttribute("type", "text")
-    // hide element
-    
+function togglePasswordVisibility(selector) {
+    // Get the password input element and image element
+    const passwordInput = document.querySelector(selector);
+    const imageElement = document.querySelector(".form__input_showPassword_1"); // Replace with the actual ID or selector of your image element
+
+    // Check if the element is an input with type "password"
+    if (passwordInput && passwordInput.type === "password") {
+        // Change the input type to "text" to reveal the password
+        passwordInput.type = "text";
+        imageElement.src = "/img/show.png"; // Change the image source to show.png
+    } else {
+        // Change the input type back to "password" to hide the password
+        passwordInput.type = "password";
+        imageElement.src = "/img/Group.png"; // Change the image source back to Group.png
+    }
 }
+
+function togglePasswordVisibilitySecond(selector) {
+    // Get the password input element and image element
+    const passwordInput = document.querySelector(selector);
+    const imageElement = document.querySelector(".form__input_showPassword_2"); // Replace with the actual ID or selector of your image element
+
+    // Check if the element is an input with type "password"
+    if (passwordInput && passwordInput.type === "password") {
+        // Change the input type to "text" to reveal the password
+        passwordInput.type = "text";
+        imageElement.src = "/img/show.png"; // Change the image source to show.png
+    } else {
+        // Change the input type back to "password" to hide the password
+        passwordInput.type = "password";
+        imageElement.src = "/img/Group.png"; // Change the image source back to Group.png
+    }
+}
+
 
 const getUserRole = (element) => {
     const ACTIVE_ELEMENT = element.querySelector(".active")
@@ -52,10 +79,25 @@ document.addEventListener("DOMContentLoaded", () => {
         // get data form
         let role = getUserRole(LF_BLOCK);
         let lastUserName = getLastNameUser(INPUT_LAST_NAME);
-        // create data frame
-        const USER_DATA = {
-            role, lastUserName
+        let firstUserNAme = document.querySelector(".form__input_first_name").value
+        let userEmail = document.querySelector(".form__input_email").value
+        let userPassword = document.querySelector(".form__input_password").value
+        let userPasswordRepeat=  document.querySelector(".form__input_password_reat").value
+        // check passwords equality
+        if (userPassword === userPasswordRepeat){
+            // create data frame
+            const USER_DATA = {
+                role,
+                firstUserNAme,
+                lastUserName,
+                userEmail,
+                userPassword
+            }
+            console.log("USER_DATA", USER_DATA)
         }
-        console.log("USER_DATA", USER_DATA)
+        else{ // send message about not equality passwords
+            alert("Паролі не співпадають")
+        }
+        
     })
 })
