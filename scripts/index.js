@@ -55,6 +55,7 @@ const getUserDataFromField = (element) => {
 
 
 // start point
+console.log(false**0)
 document.addEventListener("DOMContentLoaded", () => {
     // get element from document
     const LEFT_BLOCK = document.querySelector(".form__top_LFor_Lblock");
@@ -88,10 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
     REGISTER_FORM.addEventListener("submit", (e)=>{
         e.preventDefault();
         // get user data element 
-        
         let role = getUserRole(LF_BLOCK);
         let lastUserName = getUserDataFromField(INPUT_LAST_NAME);
-        let firstUserNAme = getUserDataFromField(INPUT_NAME)
+        let firstUserName = getUserDataFromField(INPUT_NAME)
         let userEmail = getUserDataFromField(INPUT_EMAIL)
         let userPassword = getUserDataFromField(INPUT_PASSWORD)
         let userPasswordRepeat= getUserDataFromField(INPUT_CONFIRM_PASSWORD)
@@ -100,12 +100,19 @@ document.addEventListener("DOMContentLoaded", () => {
             // create data frame
             const USER_DATA = {
                 role,
-                firstUserNAme,
+                firstUserName,
                 lastUserName,
                 userEmail,
                 userPassword
             }
             console.log("USER_DATA", USER_DATA)
+            // set to LS(local storage)
+            localStorage.setItem("user", JSON.stringify(USER_DATA))
+            // set to SS(session storage)
+            sessionStorage.setItem("user", JSON.stringify(USER_DATA))
+            // set to Cookie
+            const CookieObj = JSON.stringify(USER_DATA)
+            document.cookie = `user=${CookieObj}; expires=Thu, 01 Jan 2099 00:00:00 UTC; path="/`
         }
         else{ // send message about not equality passwords
             alert("Паролі не співпадають")
