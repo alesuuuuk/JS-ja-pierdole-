@@ -8,8 +8,24 @@
 </head>
 
 <body>
-    
-    hello world
+    <section class="products">
+        <div class="products__sort">
+         <select name="sort" id="products__sort">
+            <option  value=""> Select type sort</option>
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+         </select>
+        </div>
+        <div class="products__filter">
+            <div class="products__filter_search">
+                <label for="filter_search">Search</label>
+                <input type="text" name="search" id="filter_search">
+            </div>
+        </div>
+        <div class="products__area">
+            <!-- products list -->
+        </div>
+    </section>
 
     <script src="/scripts/index.js"></script>
 </body>
