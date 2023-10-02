@@ -9,6 +9,24 @@ const getAllProducts = async () => {
 
 }
 
+const showCounterCart = () =>{
+    // get cart cfrom LS
+    const CART=  localStorage.getItem("cart");
+    if(CART){
+        //  get element 
+        const COUNTER = document.querySelector(".products__cart_counter")
+        // calc qty 
+        let allProductsQty = 0;
+        JSON.parse(CART).map((e)=>{
+            allProductsQty += e.qty
+        })
+        // display qty
+        COUNTER.innerHTML = allProductsQty;
+    }else{
+        return
+    }
+}
+
 const showProductsOnDOM = async (products, selector) => {
     // create html
     let html = '';
@@ -85,17 +103,38 @@ const addProductsToCart = (product_id) => {
     cart ? cart = JSON.parse(cart) : cart = [];
     // check if cart empty
     if (cart.length > 0) {
-        let exist = cart.some(product => product.id === product_id)
-        console.log(exist)
+        let index = cart.findIndex(product => product_id == product.id)
+        console.log(index)
+        if (index != -1){
+            cart[index].qty++;
+
+        }else{
+            cart.push({
+                id: product_id,
+                qty: 1
+            })
+        }
     } else {
         cart.push({ id: product_id, qty: 1 })
     }
     // write to LS
     localStorage.setItem("cart", JSON.stringify(cart))
+    // display counter cart
+    
+    showCounterCart();
+
 }
 
+// cleaner LS
+document.addEventListener("DOMContentLoaded", () => {
+    localStorage.removeItem('dynamic_products')
+})
+
+
 // start point
+
 document.addEventListener("DOMContentLoaded", async () => {
+    showCounterCart();
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
@@ -119,7 +158,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 })
 
-// cleaner LS
-document.addEventListener("DOMContentLoaded", () => {
-    localStorage.removeItem('dynamic_products')
-})
