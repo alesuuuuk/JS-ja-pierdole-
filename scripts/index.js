@@ -1,22 +1,13 @@
 
 
-
 // start point
 document.addEventListener("DOMContentLoaded", () => {
-    // const CANVAS = document.querySelector("#myCanvas")
-    // const CTX = CANVAS.getContext("2d") //CTX=context
-
-    // // draw rectangle
-    // CTX.fillStyle = '#f00'
-    // CTX.fillRect(50, 50, 100, 100) // 1,2=  x,y; 3-width, 4-heigth
-
-    // ping pong
     const canvas = document.getElementById("pongCanvas");
     const context = canvas.getContext("2d");
 
-    const paddleWidth = 10;
-    const paddleHeight = 100;
-    const ballSize = 10;
+    const paddleWidth = 2;
+    const paddleHeight = 10;
+    const ballSize = 2;
 
     let xPaddle1 = 10;
     let yPaddle1 = canvas.height / 2 - paddleHeight / 2;
@@ -25,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let xBall = canvas.width / 2;
     let yBall = canvas.height / 2;
-    let ballSpeedX = 5;
-    let ballSpeedY = 5;
+    let ballSpeedX = 2;
+    let ballSpeedY = 3;
 
     let playerScore = 0;
     let computerScore = 0;
@@ -85,10 +76,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Рух платформи гравця
         if (yPaddle1 > 0 && (yPaddle1 + paddleHeight < canvas.height)) {
+            console.log(yPaddle1)
             if (wPressed && !sPressed) {
-                yPaddle1 -= 10;
+                yPaddle1 -= 5;
             } else if (sPressed && !wPressed) {
-                yPaddle1 += 10;
+                yPaddle1 += 5;
+            }
+        } else if (yPaddle1 > 0 && (yPaddle1 + paddleHeight >= canvas.height)) {
+            if (wPressed && !sPressed) {
+                yPaddle1 -= 5;
+            }
+        }else if (yPaddle1 <= 0 && (yPaddle1 + paddleHeight < canvas.height)) {
+            if (!wPressed && sPressed) {
+                yPaddle1 += 5;
+            }
+        }
+
+        if (yPaddle2 > 0 && (yPaddle2 + paddleHeight < canvas.height)) {
+            console.log(yPaddle2)
+            if (wPressed && !sPressed) {
+                yPaddle2 -= 5;
+            } else if (sPressed && !wPressed) {
+                yPaddle2 += 5;
+            }
+        } else if (yPaddle2 > 0 && (yPaddle2 + paddleHeight >= canvas.height)) {
+            if (wPressed && !sPressed) {
+                yPaddle2 -= 5;
+            }
+        }else if (yPaddle2 <= 0 && (yPaddle2 + paddleHeight < canvas.height)) {
+            if (!wPressed && sPressed) {
+                yPaddle2 += 5;
             }
         }
 
@@ -106,8 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function resetBall() {
         xBall = canvas.width / 2;
         yBall = canvas.height / 2;
-        ballSpeedX = 5;
-        ballSpeedY = 5;
+        ballSpeedX = 2;
+        ballSpeedY = 3;
     }
 
     let wPressed = false;
@@ -132,3 +149,173 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     draw(); // Запускаємо гру
+
+})
+
+
+
+
+
+// __________- ANOTHER GAME_____________
+
+
+// (function () {
+// 	'use strict';
+
+// 	var canvas = document.getElementById('canvas');
+// 	var ctx = canvas.getContext('2d');
+
+// 	// Rectangle
+// 	var rect = {
+// 		x: 0,
+// 		y: 75,
+// 		width: 30,
+// 		height: 30
+// 	};
+
+// 	var animId = null;
+
+// 	var direction = {
+// 		right: true,
+// 		bottom: true
+// 	};
+// 	var speed = {
+// 		x: 5,
+// 		y: 5,
+// 		haste: 10,
+// 		hasteX: 5,
+// 		hasteY: 10
+// 	};
+
+// 	// Set dimensions
+// 	function setCanvasDimensions() {
+// 		var width = $(document).width() / 1.1;
+// 		var height = $(document).height() / 1.5;
+
+// 		canvas.width = width;
+// 		canvas.height = height;
+// 	}
+
+// 	// Re-Draw
+// 	function drawRect() {
+// 		ctx.beginPath();
+// 		ctx.rect(
+// 			rect.x,
+// 			rect.y,
+// 			rect.width,
+// 			rect.height);
+
+// 		ctx.fillStyle = '#E74C3C';
+// 		ctx.fill();
+// 	}
+
+// 	function handleEdge() {
+// 		if (rect.x + rect.width >= canvas.width || rect.x < 0) {
+// 			direction.right = !direction.right;
+// 			speed.hasteX = speed.x + speed.haste;
+// 		}
+
+// 		if (rect.y + rect.height >= canvas.height || rect.y < 0) {
+// 			direction.bottom = !direction.bottom;
+// 			speed.hasteY = speed.y + speed.haste;
+// 		}
+// 	}
+
+// 	function handleHaste() {
+// 		if (speed.hasteX > speed.x) {
+// 			speed.hasteX--;
+// 		}
+// 		if (speed.hasteY > speed.y) {
+// 			speed.hasteY--;
+// 		}
+// 	}
+
+// 	// Clear the Canvas
+// 	function clear() {
+// 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+// 	}
+
+// 	// Trigger Re-Draw
+// 	function render() {
+// 		var speedX = speed.hasteX > speed.x ? speed.hasteX : speed.x;
+// 		var speedY = speed.hasteY > speed.y ? speed.hasteY : speed.y;
+
+// 		handleEdge();
+// 		handleHaste();
+
+// 		if (direction.right) {
+// 			rect.x = rect.x + speedX;
+// 		} else {
+// 			rect.x = rect.x - speedX;
+// 		}
+
+// 		if (direction.bottom) {
+// 			rect.y = rect.y + speedY;
+// 		} else {
+// 			rect.y = rect.y - speedY;
+// 		}
+
+// 		drawRect(rect);
+// 	}
+
+// 	// Setup the animation
+// 	function animate() {
+// 		animId = window.requestAnimationFrame(animate);
+
+// 		clear();
+// 		render();
+// 	}
+
+// 	// Stop the animation
+// 	function stop(id) {
+// 		if (id) {
+// 			window.cancelAnimationFrame(id);
+// 		}
+// 	}
+
+// 	// Debounce helper for window resize
+// 	function debounceResize(delay, callback) {
+// 		var timeout;
+
+// 		$(window).on('resize orientationChanged', function () {
+// 			clearTimeout(timeout);
+// 			timeout = setTimeout(callback, delay);
+// 		});
+// 	}
+
+// 	/**
+// 	 * Button click handlers
+// 	 */
+
+// 	debounceResize(20, function () {
+// 		setCanvasDimensions();
+// 	});
+
+// 	$('#stop').on('click', function (e) {
+// 		e.preventDefault();
+// 		stop(animId);
+// 	});
+
+// 	$('#run').on('click', function (e) {
+// 		e.preventDefault(animId);
+// 		stop(animId);
+// 		animate();
+// 	});
+
+// 	$('#speedX').on('change', function (e) {
+// 		speed.x = parseInt(e.target.value, 10);
+// 	});
+// 	$('#speedY').on('change', function (e) {
+// 		speed.y = parseInt(e.target.value, 10);
+// 	});
+
+// 	/**
+// 	 * Init
+// 	 */
+
+// 	(function () {
+// 		setCanvasDimensions();
+// 		animate();
+// 	}());
+
+// }());
