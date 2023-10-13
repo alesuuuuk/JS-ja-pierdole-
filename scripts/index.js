@@ -1,102 +1,134 @@
 
-console.log("JA PIERDOLE")
-const KURWA = "kurwa"
-if (KURWA == "fgfgff") {
-    console.log("jfff")
-}
-else {
-    console.log("pacany buryu narygav")
-}
-let text = "some text__"
 
 
+// start point
+document.addEventListener("DOMContentLoaded", () => {
+    // const CANVAS = document.querySelector("#myCanvas")
+    // const CTX = CANVAS.getContext("2d") //CTX=context
 
-var testVariableOne = "test1"
-let testVariableTwo = "test2"
-const testVariableThree = "test3"
+    // // draw rectangle
+    // CTX.fillStyle = '#f00'
+    // CTX.fillRect(50, 50, 100, 100) // 1,2=  x,y; 3-width, 4-heigth
 
-// let nameUser, age, surname;
-// nameUser = 'John'
-// age = 21
-// surname = "Doe"
+    // ping pong
+    const canvas = document.getElementById("pongCanvas");
+    const context = canvas.getContext("2d");
 
-// console.log(nameUser + surname + age)   
+    const paddleWidth = 10;
+    const paddleHeight = 100;
+    const ballSize = 10;
 
-// console.log(`Name:${nameUser}, Username${surname}, Age:${age}`)
-// console.log(typeof nameUser, typeof age, typeof surname)
-// console.log(nameUser.toLowerCase()) // toUpperCase()
-// console.log(text.length)
+    let xPaddle1 = 10;
+    let yPaddle1 = canvas.height / 2 - paddleHeight / 2;
+    let xPaddle2 = canvas.width - 20;
+    let yPaddle2 = canvas.height / 2 - paddleHeight / 2;
 
-// console.log(text.replaceAll(" ", ""))
+    let xBall = canvas.width / 2;
+    let yBall = canvas.height / 2;
+    let ballSpeedX = 5;
+    let ballSpeedY = 5;
 
-// console.log(nameUser[0])
+    let playerScore = 0;
+    let computerScore = 0;
 
-// console.log(56>3)
+    const winningScore = 5;
 
-// let tempArr = [1, 3, 2, 5, 543242, 123, 3425, "test"]
-// console.log(tempArr)
-// console.log(tempArr.length)
-// tempArr.push("new element!!")
-// console.log(tempArr)
-// tempArr.unshift(" new start element")
-// console.log(tempArr)
-// tempArr.pop()
-// console.log(tempArr)
+    function draw() {
+        // Очищаємо поле
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
-// tempArr.forEach(element => {
-//     console.log(element)
-// });
+        // Малюємо платформи
+        context.fillStyle = "white";
+        context.fillRect(xPaddle1, yPaddle1, paddleWidth, paddleHeight);
+        context.fillRect(xPaddle2, yPaddle2, paddleWidth, paddleHeight);
 
-// let index = tempArr.indexOf('test')
-// tempArr.splice(index, 1)
-// console.log(tempArr)
+        // Малюємо м'яч
+        context.beginPath();
+        context.arc(xBall, yBall, ballSize, 0, Math.PI * 2);
+        context.fill();
 
+        // Оновлюємо позицію м'яча
+        xBall += ballSpeedX;
+        yBall += ballSpeedY;
 
-// let fruits_arr = ['apple', "pineaple", "banana"]
-// fruits_arr.forEach((fruit, index)=>{
-//     console.log(fruit, index)
-// })
+        // Відбивання м'яча від платформ
+        if (xBall < xPaddle1 + paddleWidth && yBall > yPaddle1 && yBall < yPaddle1 + paddleHeight) {
+            ballSpeedX = -ballSpeedX;
+        }
 
-// fruits_arr.map((fruit, index)=>{
-//     console.log(fruit, index)
-// })
+        if (xBall > xPaddle2 && yBall > yPaddle2 && yBall < yPaddle2 + paddleHeight) {
+            ballSpeedX = -ballSpeedX;
+        }
 
+        // Перевірка на виход за межі ігрового поля
+        if (xBall < 0) {
+            computerScore++;
+            if (computerScore >= winningScore) {
+                alert("Комп'ютер виграв! Гра завершена.");
+                document.location.reload();
+            }
+            resetBall();
+        }
 
-// let filteredFruits = fruits_arr.filter((fruit)=>{
-//     if( fruit == 'banana'){
-//         return fruit
-//     }
-// })
-// console.log(filteredFruits)
+        if (xBall > canvas.width) {
+            playerScore++;
+            if (playerScore >= winningScore) {
+                alert("Ви виграли! Гра завершена.");
+                document.location.reload();
+            }
+            resetBall();
+        }
 
+        if (yBall < 0 || yBall > canvas.height) {
+            ballSpeedY = -ballSpeedY;
+        }
 
-// filteredFruits = fruits_arr.filter(fruit => fruit== 'apple')
-// console.log(filteredFruits)
+        // Рух платформи гравця
+        if (yPaddle1 > 0 && (yPaddle1 + paddleHeight < canvas.height)) {
+            if (wPressed && !sPressed) {
+                yPaddle1 -= 10;
+            } else if (sPressed && !wPressed) {
+                yPaddle1 += 10;
+            }
+        }
 
+        // Рух платформи комп'ютера
+        if (yBall > (yPaddle2 + paddleHeight / 2)) {
+            yPaddle2 += 5;
+        } else {
+            yPaddle2 -= 5;
+        }
 
-// // sort
-// let numbersArr = [1,2,33,423,4,24,42,42,32,4,24,35,654,67]
-// numbersArr.sort((a, b)=>{
-//     return a - b
-// })
+        // Анімація
+        requestAnimationFrame(draw);
+    }
 
-// console.log(numbersArr)
+    function resetBall() {
+        xBall = canvas.width / 2;
+        yBall = canvas.height / 2;
+        ballSpeedX = 5;
+        ballSpeedY = 5;
+    }
 
+    let wPressed = false;
+    let sPressed = false;
 
-let tempUser = {
-    name: "john",
-    age: 21,
-    adress: [],
-    surname: "doe"
-}
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "w" || e.key === "W") {
+            wPressed = true;
+        }
+        if (e.key === "s" || e.key === "S") {
+            sPressed = true;
+        }
+    });
 
-console.log(tempUser.name)
-// add new element
-tempUser.salary = 3000
-console.log(tempUser)
+    document.addEventListener("keyup", function (e) {
+        if (e.key === "w" || e.key === "W") {
+            wPressed = false;
+        }
+        if (e.key === "s" || e.key === "S") {
+            sPressed = false;
+        }
+    });
 
-const {name, surname, adress} = tempUser
-console.log(surname)
-
-delete tempUser.age
-console.log(tempUser)
+    draw(); // Запускаємо гру
